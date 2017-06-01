@@ -3,27 +3,29 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   providers: [AngularFireAuth]
 })
+
 export class AppComponent {
   public items: FirebaseListObservable<any>;
   public name: any = '';
   public msgValue: string = '';
   public msgLink: string = '';
+  public msgVideo: string = '';
   public picture: string = '';
   public link: string = '';
 
   constructor(public afd: AngularFireDatabase, public afa: AngularFireAuth) {
     this.items = afd.list('/messages', {
       query: {
-        limitToLast: 50
+        limitToLast: 20
       }
     });
+
   };
 
   login() {
@@ -51,13 +53,36 @@ export class AppComponent {
   }
 
   chatSend(theirMessage: string) {
-    this.items.push({ message: theirMessage, name: this.name, picture: this.picture, link: this.link});
+    this.items.push({
+      message: theirMessage,
+      name: this.name,
+      picture: this.picture,
+      link: this.link,
+      date: Date()
+    });
     this.msgValue = '';
   }
 
   shareLinkSend(sharedLink: string) {
     console.log(sharedLink);
-    this.items.push({ name: this.name, picture: this.picture, link: this.link, sharedLink: sharedLink })
+    this.items.push({
+      name: this.name,
+      picture: this.picture,
+      link: this.link,
+      sharedLink: sharedLink,
+      date: Date()
+    });
     this.msgLink = '';
+  }
+
+  shareVideo(sharedVideo: string) {
+    this.items.push({
+      name: this.name,
+      picture: this.picture,
+      videoId: sharedVideo,
+      link: this.link,
+      date: Date()
+    });
+    this.msgVideo = '';
   }
 }

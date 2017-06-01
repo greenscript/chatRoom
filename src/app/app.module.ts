@@ -6,6 +6,9 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { SafePipe } from './pipes/safe.pipe';
+import { OrderByPipe } from './pipes/orderBy.pipe';
+import { MomentModule } from 'angular2-moment';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAOGpPTL47GC1UhpiO__qPygW3bnOMH-6U",
@@ -18,14 +21,17 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SafePipe,
+    OrderByPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    MomentModule
   ],
   providers: [],
   bootstrap: [AppComponent]

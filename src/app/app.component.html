@@ -10,18 +10,27 @@
 <div class="row columns">
   <input type="text" id="message" *ngIf="name" placeholder="Chat here..." (keyup.enter)="chatSend($event.target.value)" [(ngModel)]="msgValue" />
   <span class="or" *ngIf="name">Or...</span>
-  <input type="text" id="imageLink" *ngIf="name" placeholder="Share an Image or Gif url..." (keyup.enter)="shareLinkSend($event.target.value)" [(ngModel)]="msgLink">
+  <input type="text" id="imageLink" *ngIf="name" placeholder="Image or Gif url..." (keyup.enter)="shareLinkSend($event.target.value)" [(ngModel)]="msgLink">
+  <span class="or" *ngIf="name">Or...</span>
+  <input type="text" id="videoId" *ngIf="name" placeholder="Youtube Video Id..." (keyup.enter)="shareVideo($event.target.value)" [(ngModel)]="msgVideo">
   <div class="chat">
-    <div class="chat-container" *ngFor="let item of items | async">
+    <div class="chat-container" *ngFor="let item of items | async | orderBy  ">
       <span>
         <img class="profile-img" src="{{item.picture}}" alt="">
         <a href="{{item.link}}">{{item.name}}</a>
+        <div class="timeAgo" *ngIf="item.date">
+          <span>{{item.date | amTimeAgo}}</span>
+        </div>
       </span>
       <div *ngIf="item.message">
         <p>{{item.message}}</p>
       </div>
       <div *ngIf="item.sharedLink" class="shared-img-container">
         <img class="shared-img" src="{{item.sharedLink}}">
+      </div>
+      <div *ngIf="item.videoId" class="shared-img-container">
+        <iframe width="100%" height="315" [src]="item.videoId | safe" style="border: none;">
+        </iframe>
       </div>
     </div>
   </div>

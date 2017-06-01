@@ -86,3 +86,10 @@ input:focus {
     max-height: 338px;
   }
 }
+
+.timeAgo {
+  display: inline-block;
+  color: #FFF;
+  font-size: 13px;
+  float: right;
+}
