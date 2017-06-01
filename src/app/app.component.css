@@ -1,0 +1,88 @@
+input {
+  background:none;
+  border:none;
+  border-bottom: 1px solid #4C4C4C;
+  outline:none;
+  box-shadow:none;
+  color: white;
+  font-size:1.6em;
+  font-weight:300;
+  padding:1.2em 0;
+}
+
+#message {
+  margin-bottom: 15px;
+}
+
+#imageLink {
+  margin-bottom: 15px;
+}
+
+input:focus {
+  background:none;
+  border:none;
+  border-bottom: 1px solid #4C4C4C;
+  outline:none;
+  box-shadow:none;
+}
+
+.or {
+  color: white;
+  font-size:1.6em;
+  font-weight:300;
+  padding: 1em 0;
+}
+
+.chat {
+  padding: 2em 0;
+}
+
+.chat-container {
+    display:block;
+    width:100%;
+}
+
+.chat-container a {
+    text-transform: uppercase;
+    font-weight:bold;
+    color:#816A98;
+    font-size:.8em;
+    letter-spacing:2px;
+}
+
+.chat-container p {
+    background:#323035;
+    padding:1.1em;
+    color:white;
+    margin: 10px 0 10px 0;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.shared-img-container {
+  padding: 1.5em 0;
+}
+
+@media (min-width: 320px) {
+  .shared-img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+@media (1024px) {
+  .shared-img {
+    max-width: 600px;
+    max-height: 338px;
+  }
+}
